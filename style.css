@@ -1,0 +1,212 @@
+:root{
+    --clr-primary: hsl(259, 100%, 65%);
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-200: hsl(0, 0%, 94%);
+    --clr-neutral-400: hsl(0, 0%, 86%);
+    --clr-neutral-600: hsl(0, 1%, 44%);
+    --clr-neutral-900: hsl(0, 0%, 8%);
+
+    --clr-error: hsl(0, 100%, 67%);
+}
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*
+2. Remove default margin
+*/
+* {
+margin: 0;
+}
+/*
+3. Allow percentage-based heights in the application
+*/
+html, body {
+height: 100%;
+}
+/*
+Typographic tweaks!
+4. Add accessible line-height
+5. Improve text rendering
+*/
+body {
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
+/*
+6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+display: block;
+max-width: 100%;
+}
+/*
+7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+font: inherit;
+}
+/*
+8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+overflow-wrap: break-word;
+}
+
+
+body{
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--clr-neutral-900);
+    background: var(--clr-neutral-200);
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+main{
+    width: min(80%, 52.5rem);
+    background: var(--clr-neutral-100);
+    padding: 3.75rem;
+    border-radius: 1rem 1rem 10rem 1rem;
+
+    display: grid;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 2rem;
+}
+
+form{
+    /* !!!!!!!!!!!!!!!!!!!!_____________ */
+    display: grid;
+    gap: 1rem
+}
+.input-wrap{
+    display: flex;
+    gap: 2rem;
+}
+.label{
+    --input-width: 10rem; 
+
+    color: var(--clr-neutral-600);
+    /* width: min(10rem, 33%); */
+    width: min(10rem, 25%);
+    text-transform:uppercase;
+    letter-spacing: .125rem;
+
+    display: grid;
+    position: relative; /*Not the ideal solution yet*/
+}
+.label.error-toggle{
+    color: var(--clr-error);
+}
+input{
+    font-size: 2rem;
+    width: 100%;
+    border-radius: .5rem;
+    padding: 1rem .5rem;
+    
+    border: 1px solid var(--clr-neutral-400);
+}
+input.error-toggle{
+    border-color: var(--clr-error);
+}
+.error{
+    color: var(--clr-error);
+    text-transform: none;
+    font-size: .75rem;
+    letter-spacing: normal;
+
+
+    position: absolute;
+    top: 100%;
+}
+
+
+
+
+.divider-wrapper{
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+}
+.divider{
+    width: 100%;
+    border-top: 3px solid var(--clr-neutral-200);
+}
+
+.divider-wrapper .button{
+    cursor: pointer;
+    background: var(--clr-primary);
+    border: none;
+    border-radius: 50%;
+    width: 5.9375rem;
+    aspect-ratio: 1;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.divider-wrapper .button:active{
+    background: var(--clr-neutral-900);
+}
+
+
+.output_container{
+    font-size: 4rem;
+    font-weight: 800;
+    font-style: italic;
+
+}
+output{
+    color: var(--clr-primary);
+}
+
+
+@media only screen and (max-width: 600px){
+    main{
+        width: calc(100% - 2rem);
+        padding: 3.375rem 1.5rem;
+
+    }
+
+    .input-wrap{
+        gap: 1rem;
+    }
+    label{
+        font-size: 1rem;
+        width: 33%;
+    }
+    input{
+        font-size: 1rem;
+    }
+
+
+    .divider-wrapper{
+        justify-content: center;
+    }
+
+    .divider{
+        position: absolute;
+        z-index: 1;
+    }
+    .divider-wrapper .button{
+        width: 4rem;
+        z-index: 100;
+    }
+    .divider-wrapper .button > svg{
+        height: 1.5rem;
+        /* stroke-width: 100%; doesnt work rn */
+    }
+
+
+
+    .output_container{
+        font-size: 3rem;
+    }
+}
